@@ -1,0 +1,33 @@
+<div style = "width: 30%; height: 400px; background-color : white; margin: 0 auto; margin-top: 80px; border: 1px solid rgb(240,240,240); box-shadow: 1px 0px 5px rgb(230,230,230)">
+<div style = "width: 80%; height: inherit; margin: 0 auto; margin-top: 20px;">
+<div class="input-group" style = "width: 100%">
+  <div class = "accounts new">
+	<h2>Sign Up</h2>
+	<%= form_for(:account, :url =>{:action => 'create'}) do |f|%>
+	<table summary = "Create New Account">
+		<tr>
+			<th>First Name</th>
+			<td><%= f.text_field(:first_name)%></td>
+		</tr>
+		<tr>
+			<th>Last Name</th>
+			<td><%= f.text_field(:last_name)%></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td><%= f.text_field(:email)%></td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td><%= f.text_field(:password)%></td>
+		</tr>
+	</table>
+	<div class = "form-buttons">
+		<%= submit_tag("Submit")%>
+	</div>
+	<% end %>
+</div>
+  
+</div>
+</div>
+</div>
