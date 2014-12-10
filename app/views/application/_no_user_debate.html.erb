@@ -1,0 +1,77 @@
+<% f.each do |d|%>
+            <div class="panel panel-default panel-main">
+                <!-- a dropdown menu of currently unknown purpose -->
+                <div class="dropdown">
+                    <span class="dropdown-toggle" type="button" data-toggle="dropdown">
+                        <span class="[ glyphicon glyphicon-chevron-down ]"></span>
+                    </span>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                    </ul>
+                </div>
+
+                <!-- stuff like topic, post info, user info and content (panel-heading is a misnomer) -->
+
+                <div class="panel-heading">
+                    <div class ="debate-title">
+                        <h3><%= d.topic_sentence %></h3>
+                        <div class = "text-debate-info">
+                            <span>Posted On</span> - <span><%= d.created_at%></span> 
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="debate-content text-description">
+                        <p><%= d.description%></p>
+
+
+                    </div>
+                </div>
+
+                <!-- stuff like debaters and their positions -->
+
+                <div class = "panel-body">
+                    <div class = "no-debaters-notice-container">
+                       <div class = "no-debaters-notice">
+                           <% if d.debates.first.debate_participations.empty?%>
+                                <%= "No participants yet" %>
+                           <%end%>
+                       </div>
+                       <div class = "no-debaters-join-btn">
+                            <a class="join_debate_choices pull-right">Join</a>
+                            
+                       </div>
+                       <div  class = "debaters-select-side-container hidden">
+                        Which side are you on?
+                        <%= form_tag(:controller =>'debates', :action => 'create' )%>
+                        <div class = "debaters-select-side-choices">
+                            <%= radio_button_tag(:side, 'left_side') %>
+                            <%= label_tag(:choice_one, d.left_side_topic) %></br>
+                            <%= radio_button_tag(:side, 'right_side') %>
+                            <%= label_tag(:choice_two, d.right_side_topic) %></br>
+                        </div>
+                        <div class = "debaters-select-side-btn">
+                            <%= submit_tag("Join", :class =>"btn btn-primary nextBtn btn-sm pull-right")%>
+                        </div>
+
+                       </div>
+                    </div>
+                </div>
+            <!-- stuff like social box  -->
+            <hr class = "default-separator">
+            <div class = "panel-footer">
+                <div class = "social-box text-social">
+                    <div class = "col-md-8" style ="height: 30px;">
+                        Upvote<span class ="social-box-stat">43+</span>&nbsp;&nbsp;    Downvote  &nbsp;&nbsp;&nbsp;    Share <span class ="social-box-stat">43+</span>
+                    </div>
+                    <div class = "col-md-4 social-box-right">
+                      Stats 
+                  </div>
+              </div>
+            </div>
+            
+        </div>
+<% end %>

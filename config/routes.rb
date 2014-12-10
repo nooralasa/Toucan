@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   
  
-  root "accounts#index"
-  match '/:controller(/:action(/:id))', :via => :get
-  match '/:controller(/:action(/:id))', :via => :post
+  # get 'access/index'
+
+  # get 'access/login'
+
+  root "debates#index"
+  match '/:controller(/:action(/:id))', :via => [:get, :post]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

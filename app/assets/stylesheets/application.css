@@ -11,6 +11,12 @@
  * file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require bootstrap
+ *= require main
+ *= require access
+ *= require debate_custom
+ *= require header_custom
+ *= require results
+ 
  
  */

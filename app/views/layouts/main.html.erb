@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toucan | <%= @page_title || "Home" %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class = "wall">
+
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class = "container">
+  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">Brand</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse search-container" id="bs-example-navbar-collapse-1">
+	      
+	      <form class="navbar-form navbar-left search-bar-container" role="search">
+	      	<div class="col-lg-12">
+	      		<div class="input-group search-bar">
+	      			<input type="text" class="form-control">
+	      			<span class="input-group-btn">
+	      				<button class="btn btn-default" type="button">Go!</button>
+	      			</span>
+	      		</div><!-- /input-group -->
+  		    </div><!-- /.col-lg-6 -->
+	      </form>
+
+	     <div class="nav navbar-nav navbar-right">
+	      	<% if session[:logged_in]%>
+	      	<div class = "navbar-profile-pic-container"><%= image_tag(session[:picture], :size => '40x40', :alt => '+', :class => "navbar-profile-pic")%>
+	      	</div>
+	      	<div class = "navbar-info-container">
+	      	<a class = "navbar-info-link"><%= session[:name]%></a>
+	      	<%= link_to("Log Out", {:controller => 'access', :action => 'logout'}, :class => "navbar-info-link")%>
+	      	<% else %>
+	      	<div class = "navbar-access-menu">
+	        <%= link_to("Log In", {:controller => 'access', :action => 'login'}, :class => "navbar-info-link")%>
+	        <%= link_to("Sign Up", {:controller => 'accounts', :action => 'index'}, :class => "navbar-info-link")%>
+	    </div>
+	      	<% end %>
+	      </div>
+	      </div>
+	    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</div>
+</nav>
+	
+
+<%= yield %>
+
+</body>
+</html>
